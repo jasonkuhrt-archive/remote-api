@@ -1,0 +1,19 @@
+{
+  "name": "frame-api",
+  "repo": "jasonkuhrt/frame-api",
+  "description": "postMessage-based protocol and API builder",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "lodash/lodash": "*",
+    "visionmedia/debug": "*",
+    "component/emitter": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ],
+  "remotes": []
+}
