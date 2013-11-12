@@ -2,8 +2,9 @@ var _ = require('lodash');
 var Emitter = require('emitter');
 
 var api = module.exports = {};
+var self = window;
 
-api.make_function = function(command_name, frame){
+api.make_function = function(command_name, peer){
   return function(){
     var callback = _.last(arguments);
     var message = {
@@ -13,12 +14,12 @@ api.make_function = function(command_name, frame){
       timestamp: Date.now()
     };
 
-    frame.postMessage(message, '*');
-    frame.addEventListener('message', returns_catcher);
+    peer.postMessage(message, '*');
+    self.addEventListener('message', returns_catcher);
 
     function returns_catcher(e){
       if (is_return(e.data, message)){
-        frame.removeEventListener('message', returns_catcher);
+        peer.removeEventListener('message', returns_catcher);
         callback.apply(null, e.data.returned);
       }
       function is_return(possible_return, sent_command){
@@ -30,16 +31,17 @@ api.make_function = function(command_name, frame){
   }
 }
 
-api.make_host_emitter = function(frame, target_origin){
+api.make_host_emitter = function(peer, target_origin){
   return function(name, args){
     var message = {type:'event', name:name, args: args || []};
-    frame.postMessage(message, target_origin);
+    peer.postMessage(message, target_origin);
   }
 }
 
-api.make_client_emitter = function(frame){
+api.make_client_emitter = function(){
   var emitter = new Emitter();
-  frame.addEventListener('message', function(e){
+  self.addEventListener('message', function(e){
+    console.log('????', e);
     if (e.data.type === 'event'){
       emitter.emit.apply(emitter, [e.data.name].concat(e.data.args))
     }
@@ -47,9 +49,9 @@ api.make_client_emitter = function(frame){
   return emitter;
 };
 
-api.make_api = function(func_names, frame){
-  var emitter = api.make_client_emitter(frame);
-  var functions = map_zip(func_names, _.partialRight(api.make_function, frame))
+api.make_api = function(func_names, peer){
+  var emitter = api.make_client_emitter();
+  var functions = map_zip(func_names, _.partialRight(api.make_function, peer))
   return _.extend(emitter, functions);
 };
 
