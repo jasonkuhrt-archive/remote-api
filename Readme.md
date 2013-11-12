@@ -1,7 +1,5 @@
-
 # frame-api
-
-  postMessage-based protocol and API builder
+  `postMessage`-based protocol and API builder
 
 ## Installation
 
@@ -14,5 +12,4 @@
 
 
 ## License
-
-  MIT
+  BSD-2-Clause
