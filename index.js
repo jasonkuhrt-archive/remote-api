@@ -19,9 +19,10 @@ api.make_function = function(command_name, peer){
 
     function returns_catcher(e){
       if (is_return(e.data, message)){
-        peer.removeEventListener('message', returns_catcher);
+        self.removeEventListener('message', returns_catcher);
         callback.apply(null, e.data.returned);
       }
+      // TODO timeout logic
       function is_return(possible_return, sent_command){
         return  possible_return.returned &&
                 possible_return.name === sent_command.name &&
@@ -41,7 +42,6 @@ api.make_host_emitter = function(peer, target_origin){
 api.make_client_emitter = function(){
   var emitter = new Emitter();
   self.addEventListener('message', function(e){
-    console.log('????', e);
     if (e.data.type === 'event'){
       emitter.emit.apply(emitter, [e.data.name].concat(e.data.args))
     }
