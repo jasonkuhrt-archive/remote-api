@@ -10,7 +10,7 @@
     "component/emitter": "*"
   },
   "development": {},
-  "license": "MIT",
+  "license": "BSD-2-Clause",
   "main": "index.js",
   "scripts": [
     "index.js"
