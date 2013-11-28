@@ -2,7 +2,7 @@
   "name": "frame-api",
   "repo": "jasonkuhrt/frame-api",
   "description": "postMessage-based protocol and API builder",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "keywords": [],
   "dependencies": {
     "lodash/lodash": "*",
