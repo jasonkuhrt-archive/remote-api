@@ -1,6 +1,6 @@
 {
-  "name": "frame-api",
-  "repo": "jasonkuhrt/frame-api",
+  "name": "remote-api",
+  "repo": "jasonkuhrt/remote-api",
   "description": "postMessage-based protocol and API builder",
   "version": "0.1.1",
   "keywords": [],
