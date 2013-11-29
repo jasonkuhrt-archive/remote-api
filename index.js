@@ -23,6 +23,7 @@ var api = module.exports = function(uri, callback){
   // Core api method to destroy DOM (thus connection) and event listeners
   emitter.closeConnection = function(){
     window.document.body.removeChild(iframe_el);
+    // TODO we cannot be hardcoding event names at the library-level!
     lo.each(['error', 'connection', 'disconnection'], function(e_name){ emitter.off(e_name); });
   };
 
@@ -30,8 +31,8 @@ var api = module.exports = function(uri, callback){
   // Once the iframe is ready, ask
   // the remote-api to expose itwindow
 
-  var on_iframe_ready = function(){
-    iframe_el.removeEventListener(on_iframe_ready);
+  var on_server_ready = function(){
+    iframe_el.removeEventListener(on_server_ready);
     log('iframe loaded');
     make_function('get_remote_api')(function(err, api){
       if (err) return console.error(err);
@@ -41,7 +42,7 @@ var api = module.exports = function(uri, callback){
       callback(null, emitter);
     });
   };
-  iframe_el.addEventListener('load', on_iframe_ready);
+  emitter.once('server-ready', on_server_ready);
 };
 
 
