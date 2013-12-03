@@ -7,7 +7,7 @@
   "dependencies": {
     "lodash/lodash": "*",
     "visionmedia/debug": "*",
-    "component/emitter": "*",
+    "component/emitter": "1.1.1",
     "es128/async-waterfall": "*"
   },
   "development": {},
