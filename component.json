@@ -1,19 +1,24 @@
 {
   "name": "remote-api",
   "repo": "jasonkuhrt/remote-api",
-  "description": "postMessage-based protocol and API builder",
+  "description": "Browser-based transaction-oriented protocol built upon iframe and postMessage",
   "version": "0.1.1",
   "keywords": [],
   "dependencies": {
     "lodash/lodash": "*",
     "visionmedia/debug": "*",
-    "component/emitter": "*"
+    "component/emitter": "*",
+    "es128/async-waterfall": "*"
   },
   "development": {},
   "license": "BSD-2-Clause",
   "main": "index.js",
   "scripts": [
-    "index.js"
+    "index.js",
+    "lib/message-model.js",
+    "lib/create-server.js",
+    "lib/create-client.js",
+    "lib/util.js"
   ],
   "remotes": []
 }

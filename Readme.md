@@ -1,5 +1,6 @@
 # remote-api
-  `postMessage`-based protocol and API builder
+
+  Browser-based transaction-oriented protocol built upon iframe and postMessage
 
 ## Installation
 
@@ -9,7 +10,22 @@
 
 ## API
 
+  TODO: Write Docs
 
+  Tentative functions so far:
+
+    createServer
+    createClient
+    makeFunction
+    makeFunctionCallback
+    makePostMessage
+
+    messageModel.event
+    messageModel.func
+    messageModel.func_return
+    messageModel.isEvent
+    messageModel.isFunc
+    messageModel.isFuncReturn
 
 ## License
   BSD-2-Clause
