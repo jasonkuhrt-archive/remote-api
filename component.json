@@ -2,7 +2,7 @@
   "name": "remote-api",
   "repo": "jasonkuhrt/remote-api",
   "description": "Browser-based transaction-oriented protocol built upon iframe and postMessage",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "keywords": [],
   "dependencies": {
     "lodash/lodash": "*",
